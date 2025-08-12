@@ -1,19 +1,35 @@
-/* Task 1: Style the body */
 body {
-    /* insert code here */
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
 }
-
-/* Task 2: Create a pseudo-element for the background and blur */
-body::before {
-    /* insert code here */
+h1 {
+  font-weight: bold;
+  color: #004e92;
 }
-
-/* Task 3: Style the content area */
-.content {
-    /* insert code here */
+h2 {
+  color: #0077b6;
 }
-
-/* Task 4: Add styles for headings, paragraphs, and buttons */
-h1, h2, .lead, .btn-primary {
-    /* insert code here */
+p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.btn-primary {
+  background-color: #00b4d8;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #0096c7;
+  transform: translateY(-2px);
 }
