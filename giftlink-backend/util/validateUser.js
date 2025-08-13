@@ -1,6 +1,6 @@
 const { body } = require('express-validator');
 
-export const validateUserRegister = [
+exports.validateUserRegister = [
   body('firstName')
     .trim()
     .notEmpty()
@@ -26,7 +26,7 @@ export const validateUserRegister = [
     .withMessage('Password must be at least 6 characters'),
 ];
 
-export const validateUserLogin = [
+exports.validateUserLogin = [
   body('email')
     .trim()
     .notEmpty()

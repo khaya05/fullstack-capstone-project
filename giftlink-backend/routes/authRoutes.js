@@ -116,7 +116,7 @@ router.post('/login', validateUserLogin, async (req, res) => {
     });
 
     logger.info(`User ${email} logged in successfully`);
-    res.json({
+    res.status(201).json({
       token,
       userName: user.firstName,
       email,
