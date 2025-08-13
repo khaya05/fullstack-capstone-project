@@ -1,13 +1,13 @@
 const { body } = require('express-validator');
 
-const validateUser = [
+export const validateUserRegister = [
   body('firstName')
     .trim()
     .notEmpty()
     .withMessage('First name is required')
     .isAlpha()
     .withMessage('Fist name must contain only letters'),
-  body('firstName')
+  body('lastName')
     .trim()
     .notEmpty()
     .withMessage('Last name is required')
@@ -26,4 +26,17 @@ const validateUser = [
     .withMessage('Password must be at least 6 characters'),
 ];
 
-module.exports = validateUser;
+export const validateUserLogin = [
+  body('email')
+    .trim()
+    .notEmpty()
+    .withMessage('Email cannot be empty')
+    .isEmail()
+    .withMessage('Invalid email address'),
+  body('password')
+    .notEmpty()
+    .withMessage('Password cannot be empty')
+    .isLength({ min: 6 })
+    .withMessage('Password must be at least 6 characters'),
+];
+
