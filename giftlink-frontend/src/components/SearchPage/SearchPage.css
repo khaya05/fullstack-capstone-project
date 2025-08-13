@@ -1,26 +1,90 @@
-/* Task 1: Style the search input field */
-.search-input {
-    /* Insert specific CSS properties here */
+/* SearchPage Styles */
+.filter-section {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Task 2: Style the search button */
-.search-button {
-    /* Insert specific CSS properties here */
+.filter-section h5 {
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: #343a40;
 }
 
-/* Task 3: Customize dropdown filters */
-.dropdown-filter {
-    /* Insert specific CSS properties here */
+.filter-section label {
+  font-weight: 500;
+  margin-top: 0.5rem;
+  color: #495057;
 }
 
-/* Task 4: Style the age range slider */
-.age-range-slider {
-    /* Insert specific CSS properties here */
+.filter-section select,
+.filter-section input[type='range'] {
+  margin-bottom: 0.5rem;
 }
 
-/* Task 5: Enhance search results cards appearance */
-.search-results-card {
-    /* Insert specific CSS properties here */
+form button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
-/* Additional placeholders for tasks 6 to 10 */
+form button:hover {
+  background-color: #0056b3;
+}
+
+.search-results .card {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-results .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.search-results img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.search-results .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.search-results .card-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.search-results .card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  text-align: right;
+}
+
+.search-results .btn-primary {
+  background-color: #007bff;
+  border: none;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.search-results .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.alert-info {
+  background-color: #e9f5ff;
+  color: #055160;
+  border: 1px solid #b6e0fe;
+}
