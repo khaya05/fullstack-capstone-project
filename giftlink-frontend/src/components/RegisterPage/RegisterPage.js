@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
 import './RegisterPage.css';
+import { urlConfig } from '../../config';
+import { useAppContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
   });
+
+  const [showerr, setShowerr] = useState('');
+  const { setIsLoggedIn, setUserName } = useAppContext();
 
   // Handles input changes
   const handleChange = (e) => {
@@ -20,10 +27,33 @@ const RegisterPage = () => {
   };
 
   // Handles form submission
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log('Registering user:', userDetails);
-    // You can add your API call here
+    try {
+      const response = await fetch(
+        `${urlConfig.backendUrl}/api/auth/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userDetails),
+        }
+      );
+      const data = await response.json();
+
+      if (response.status === 201) {
+        sessionStorage.setItem('auth-token', data.token);
+        sessionStorage.setItem('name', userDetails.firstName);
+        sessionStorage.setItem('email', data.email);
+        setIsLoggedIn(true);
+        navigate('/app');
+      } else {
+        setShowerr(data.message);
+      }
+    } catch (e) {
+      console.error('Error fetching details: ' + e.message);
+    }
   };
 
   return (
@@ -49,14 +79,17 @@ const RegisterPage = () => {
                 value={userDetails.lastName}
                 onChange={handleChange}
               />
-              <FormInput
-                id='email'
-                type='email'
-                label='Email'
-                placeholder='e.g mike@email.com'
-                value={userDetails.email}
-                onChange={handleChange}
-              />
+              <>
+                <FormInput
+                  id='email'
+                  type='email'
+                  label='Email'
+                  placeholder='e.g mike@email.com'
+                  value={userDetails.email}
+                  onChange={handleChange}
+                />
+                <div className='text-danger'>{showerr}</div>
+              </>
               <FormInput
                 id='password'
                 type='password'
