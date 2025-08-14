@@ -65,11 +65,11 @@ const Profile = () => {
 
       const payload = { ...updatedDetails };
       const response = await fetch(`${urlConfig.backendUrl}/api/auth/update`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${authtoken}`,
-          email,
+          Email: email,
         },
         body: JSON.stringify(payload),
       });

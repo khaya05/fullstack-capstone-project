@@ -15,7 +15,7 @@ const RegisterPage = () => {
   });
 
   const [showerr, setShowerr] = useState('');
-  const { setIsLoggedIn, setUserName } = useAppContext();
+  const { setIsLoggedIn } = useAppContext();
 
   // Handles input changes
   const handleChange = (e) => {
