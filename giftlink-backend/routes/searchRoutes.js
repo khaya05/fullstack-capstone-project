@@ -1,3 +1,4 @@
+/*jshint esversion: 8 */
 const express = require('express');
 const router = express.Router();
 const connectToDatabase = require('../models/db');
@@ -9,7 +10,7 @@ router.get('/', async (req, res, next) => {
     const collection = db.collection('gifts');
 
     let query = {};
-    
+
     if (req.query.name && req.query.name.trim() !== '') {
       query.name = { $regex: req.query.name, $options: 'i' };
     }
@@ -35,6 +36,5 @@ router.get('/', async (req, res, next) => {
     next(e);
   }
 });
-
 
 module.exports = router;

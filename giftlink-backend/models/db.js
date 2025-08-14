@@ -1,4 +1,4 @@
-// db.js
+/*jshint esversion: 8 */
 require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
 
@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient;
 let url = `${process.env.MONGO_URL}`;
 
 let dbInstance = null;
-const dbName = "giftdb";
+const dbName = 'giftdb';
 
 async function connectToDatabase() {
   if (dbInstance) {

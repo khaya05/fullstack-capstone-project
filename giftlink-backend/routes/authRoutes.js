@@ -1,3 +1,4 @@
+/*jshint esversion: 8 */
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -155,7 +156,7 @@ router.put('/update', validateUser, async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    const allowedFields = ['firstName', 'lastName', 'name']; 
+    const allowedFields = ['firstName', 'lastName', 'name'];
     const updateData = {};
 
     // Only include allowed fields from request body
@@ -167,7 +168,7 @@ router.put('/update', validateUser, async (req, res) => {
 
     if (req.body.name && !req.body.firstName) {
       updateData.firstName = req.body.name;
-      delete updateData.name; 
+      delete updateData.name;
     }
 
     updateData.updatedAt = new Date();
@@ -195,8 +196,8 @@ router.put('/update', validateUser, async (req, res) => {
     };
 
     const authtoken = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: '1h', 
-    }); 
+      expiresIn: '1h',
+    });
 
     logger.info(`User ${email} updated successfully`);
     res.json({
@@ -211,10 +212,8 @@ router.put('/update', validateUser, async (req, res) => {
     });
   } catch (error) {
     logger.error('Update error:', error);
-    return res.status(500).json({ message: 'Internal Server Error' }); 
+    return res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-
 module.exports = router;
-
